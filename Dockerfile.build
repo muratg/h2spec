@@ -1,0 +1,10 @@
+FROM  golang:1.10-stretch
+
+RUN go get github.com/Masterminds/glide
+
+WORKDIR $GOPATH/src/github.com/summerwind/h2spec
+COPY . .
+
+RUN make build
+RUN mkdir /BIN
+RUN cp ./h2spec /BIN
